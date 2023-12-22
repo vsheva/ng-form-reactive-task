@@ -35,8 +35,10 @@ export class AppComponent implements OnInit {
 
   onAddHobby() {
     const control = new FormControl(null, Validators.required);
+
     (<FormArray>this.signupForm.get("hobbies")).push(control)
   }
+
 
   getControls() {
     return (<FormArray>this.signupForm.get('hobbies')).controls;

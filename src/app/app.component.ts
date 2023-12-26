@@ -22,22 +22,22 @@ export class AppComponent implements OnInit {
       "gender": new FormControl('male'),
       "hobbies": new FormArray([])
     });
-    // this.signupForm.valueChanges.subscribe(
-    //   (value)=>console.log(value)
-    // )
 
-    this.signupForm.statusChanges.subscribe(
-      (status)=>console.log(status)
-    )
+    //1 listen to updates in form:   statusChanges- , signupForm.valueChanges.subscribe
+    // this.signupForm.valueChanges.subscribe((value)=>console.log(value)) // изменение по клику
+    this.signupForm.statusChanges.subscribe((status)=>console.log(status));
+
+    //2 update the form by myself: signupForm.setValue
     this.signupForm.setValue({
       'userData':{
-        'username':'Vally',
-        'email': 'vally.test.com'
+        'username':'Lery',
+        'email': 'lery.test.com'
       },
       'gender': 'male',
       'hobbies':[]
     });
 
+    //3 update part of form by myself: signupForm.patchValue
     this.signupForm.patchValue({
       'userData':{
         'username':'Vika',
@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
 
   onSubmit() {
     console.log(this.signupForm);
-    this.signupForm.reset();
+    this.signupForm.reset(); //4 reset: can pass object to reset to special values
   }
 
   onAddHobby() {

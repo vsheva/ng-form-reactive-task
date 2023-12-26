@@ -7,6 +7,7 @@ import {Observable} from "rxjs";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit {
   genders = ['male', 'female'];
   signupForm: FormGroup;
@@ -67,7 +68,7 @@ export class AppComponent implements OnInit {
     return (<FormArray>this.signupForm.get('hobbies')).controls;
   }
 
-forbiddenEmails(control: FormControl) {
+forbiddenEmails(control: FormControl): Promise<any> | Observable<any> {
 const promise = new Promise<any>((resolve, reject)=>{
   setTimeout(()=>{
     if(control.value==='test@test.com') {
